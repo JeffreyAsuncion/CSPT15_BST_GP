@@ -61,22 +61,37 @@ class TreeNode:
         # return true
         return True
     
-    # recurvsive solution
+    """recurvsive solution"""
 
-    # def is_valid_BST(self, root):
-    #         # Your code here
-    #         valid = True
-    #         if root.left:
-    #             valid = valid and root.left.value < root.value
-    #             if not valid:
-    #                 return False
-    #             valid = valid and root.left.is_valid_BST()
-    #         if root.right:
-    #             valid = valid and root.right.value > root.value
-    #             if not valid:
-    #                 return False
-    #             valid = valid and root.right.is_valid_BST()
-    #         return valid
+    def is_valid_BST_recursive(self, root):
+            # Your code here
+            # default True result as BST
+            valid = True
+            
+            # if left child exists
+            if root.left:
+                # check that the left child is smaller that the root node
+                valid = valid and root.left.value < root.value
+                # check not valid
+                if not valid:
+                    # return not valid
+                    return False
+
+                valid = valid and self.left.is_valid_BST(root)
+
+            # if right child exists
+            if root.right:
+                # check that the right child is larger that the root node
+                valid = valid and root.right.value > root.value
+                # check not valid
+                if not valid:
+                    # return not valid
+                    return False
+                
+                valid = valid and self.right.is_valid_BST(root)
+            
+            #return result
+            return valid
     
 
 b1 = TreeNode(5)
@@ -91,3 +106,6 @@ b2.right.right = TreeNode(12)
 
 print(b1.is_valid_BST(b1)) # True
 print(b2.is_valid_BST(b2)) # True
+
+print(b1.is_valid_BST_recursive(b1)) # True
+print(b2.is_valid_BST_recursive(b2)) # True
