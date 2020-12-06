@@ -62,22 +62,22 @@ class TreeNode:
         return True
     
     # recurvsive solution
-    """
-    def is_valid_BST(self):
-            # Your code here
-            valid = True
-            if self.left:
-                valid = valid and self.left.value < self.value
-                if not valid:
-                    return False
-                valid = valid and self.left.is_valid_BST()
-            if self.right:
-                valid = valid and self.right.value > self.value
-                if not valid:
-                    return False
-                valid = valid and self.right.is_valid_BST()
-            return valid
-    """
+
+    # def is_valid_BST(self, root):
+    #         # Your code here
+    #         valid = True
+    #         if root.left:
+    #             valid = valid and root.left.value < root.value
+    #             if not valid:
+    #                 return False
+    #             valid = valid and root.left.is_valid_BST()
+    #         if root.right:
+    #             valid = valid and root.right.value > root.value
+    #             if not valid:
+    #                 return False
+    #             valid = valid and root.right.is_valid_BST()
+    #         return valid
+    
 
 b1 = TreeNode(5)
 b1.left = TreeNode(3)
