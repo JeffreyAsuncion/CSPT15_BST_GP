@@ -32,6 +32,7 @@ class BinaryTreeNode:
         right_height = self.maxDepth(root.right) # traverse down right side
 
         # return the max of left height and right height + 1
+        print(left_height,right_height)
         return max(left_height,right_height) + 1 # this is the increment or counter
     
     def maxDepthIterative(self, root):
@@ -42,6 +43,7 @@ class BinaryTreeNode:
         # base case
         if root is not None:
             stack.append((1, root))
+            print("1st append")
 
         # set a depth counter?
         depth = 0
@@ -50,15 +52,17 @@ class BinaryTreeNode:
         while stack != []:
             # pop the stack to the current depth and the current root node
             current_depth, root = stack.pop()
-            
+            print("pop")
             # if our root node is not none
             if root is not None:
                 # set the depth to the max of depth and current depth
                 depth = max(depth, current_depth)
+                print(depth)
                 # append the current depth + 1 and the root left to the stack 
                 stack.append((current_depth + 1, root.left))
                 # append the current depth + 1 and the root right to the stack 
                 stack.append((current_depth + 1, root.right))
+                print("loop append")
         # return the depth
         return depth
 
@@ -72,6 +76,8 @@ b1.right.right = BinaryTreeNode(3)
 # b1.right.right.right = BinaryTreeNode(1)
 
 print(b1.maxDepth(b1))
+print("\n\n")
+print(b1.maxDepthIterative(b1))
 
 
 
