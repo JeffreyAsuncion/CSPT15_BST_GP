@@ -35,8 +35,10 @@ class BinaryTreeNode:
         print(left_height,right_height)
         return max(left_height,right_height) + 1 # this is the increment or counter
     
+
+
     def maxDepthIterative(self, root):
-        """Iterative Solution"""
+        """Iterative Solution   https://www.youtube.com/watch?v=dvmoHr5cN80"""
         # use a stack for storage -          O(n)
         stack = []
 
@@ -73,7 +75,7 @@ b1.left= BinaryTreeNode(12)
 b1.right= BinaryTreeNode(32)
 b1.right.left = BinaryTreeNode(8)
 b1.right.right = BinaryTreeNode(3)
-# b1.right.right.right = BinaryTreeNode(1)
+b1.right.right.right = BinaryTreeNode(1)
 
 print(b1.maxDepth(b1))
 print("\n\n")
