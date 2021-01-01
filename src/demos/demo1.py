@@ -23,7 +23,7 @@ class BinaryTreeNode:
         """recursive solution"""
         # Your code here -      O(n)
         # base case of empty tree?
-        if root is None:
+        if root: # if root is None:
             return 0        
         # get left height
         left_height = self.maxDepth(root.left) # traverse down left side
@@ -43,7 +43,7 @@ class BinaryTreeNode:
         stack = []
 
         # base case
-        if root is not None:
+        if root: # if root is not None:
             stack.append((1, root))
             print("1st append")
 
@@ -51,12 +51,12 @@ class BinaryTreeNode:
         depth = 0
         
         # while our stack is not empty?
-        while stack != []:
+        while stack: # while stack != []:
             # pop the stack to the current depth and the current root node
             current_depth, root = stack.pop()
             print("pop")
             # if our root node is not none
-            if root is not None:
+            if root: # if root is not None:
                 # set the depth to the max of depth and current depth
                 depth = max(depth, current_depth)
                 print(depth)
@@ -75,7 +75,7 @@ b1.left= BinaryTreeNode(12)
 b1.right= BinaryTreeNode(32)
 b1.right.left = BinaryTreeNode(8)
 b1.right.right = BinaryTreeNode(3)
-b1.right.right.right = BinaryTreeNode(1)
+# b1.right.right.right = BinaryTreeNode(1) # i added this to test algo # maxLength = 4
 
 print(b1.maxDepth(b1))
 print("\n\n")
