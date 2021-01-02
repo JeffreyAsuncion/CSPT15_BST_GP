@@ -13,6 +13,7 @@ Input:
    / \
   3   7
 Output: True
+
 Example 2:
 Input:
     10
@@ -32,6 +33,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    """iterative solution"""
     def is_valid_BST(self, root):
         # Your code here
         # set up a tuple with a stack and the lowest bounds
@@ -58,11 +60,12 @@ class TreeNode:
             inorder = root.value
             # set the root to teh roots right node
             root = root.right # traverse to the right
+            # loop will continue down the left leg
         # return true
         return True
     
-    """recurvsive solution"""
 
+    """recurvsive solution"""
     def is_valid_BST_recursive(self, root):
             # Your code here
             # default True result as BST
@@ -77,18 +80,18 @@ class TreeNode:
                     # return not valid
                     return False
 
-                valid = valid and self.left.is_valid_BST(root)
+                valid = valid and self.is_valid_BST_recursive(root.left)
 
-            # if right child exists
-            if root.right:
-                # check that the right child is larger that the root node
-                valid = valid and root.right.value > root.value
-                # check not valid
-                if not valid:
-                    # return not valid
-                    return False
-                
-                valid = valid and self.right.is_valid_BST(root)
+                # if right child exists
+                if root.right:
+                    # check that the right child is larger that the root node
+                    valid = valid and root.right.value > root.value
+                    # check not valid
+                    if not valid:
+                        # return not valid
+                        return False
+                    
+                    valid = valid and self.is_valid_BST_recursive(root.right)
             
             #return result
             return valid
@@ -105,7 +108,7 @@ b2.right.left = TreeNode(6)
 b2.right.right = TreeNode(12)
 
 print(b1.is_valid_BST(b1)) # True
-print(b2.is_valid_BST(b2)) # True
+print(b2.is_valid_BST(b2)) # False
 
 print(b1.is_valid_BST_recursive(b1)) # True
-print(b2.is_valid_BST_recursive(b2)) # True
+print(b2.is_valid_BST_recursive(b2)) # False
